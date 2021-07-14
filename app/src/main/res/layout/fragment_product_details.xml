@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="product"
+            type="com.kw.fakeStore.store.uiModel.ProductWithQuantityInCart" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".store.view.fragment.ProductDetailsFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/topMarginGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftMarginGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightMarginGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/productImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            app:imageForUrl="@{product.image}"
+            app:layout_constraintEnd_toStartOf="@id/rightMarginGuideline"
+            app:layout_constraintStart_toEndOf="@id/leftMarginGuideline"
+            app:layout_constraintTop_toBottomOf="@id/topMarginGuideline"
+            app:layout_constraintDimensionRatio="H, 1:1"/>
+
+        <TextView
+            android:id="@+id/productTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{product.title}"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintEnd_toStartOf="@id/rightMarginGuideline"
+            app:layout_constraintStart_toEndOf="@id/leftMarginGuideline"
+            app:layout_constraintTop_toBottomOf="@id/productImage"
+            tools:text="Product Title"/>
+
+        <TextView
+            android:id="@+id/productPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{product.price}"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintEnd_toStartOf="@id/rightMarginGuideline"
+            app:layout_constraintStart_toEndOf="@id/leftMarginGuideline"
+            app:layout_constraintTop_toBottomOf="@id/productTitle"
+            tools:text="Product Price"/>
+
+        <TextView
+            android:id="@+id/productDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{product.description}"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintEnd_toStartOf="@id/rightMarginGuideline"
+            app:layout_constraintStart_toEndOf="@id/leftMarginGuideline"
+            app:layout_constraintTop_toBottomOf="@id/productPrice"
+            tools:text="Product Description"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addProductIntoCartFloatingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/fake_store_add_to_cart"
+            android:contentDescription="@null"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/rightMarginGuideline"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

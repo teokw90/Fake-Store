@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Fake Store</string>
+
+    <!-- Exit Application Dialog -->
+    <string name="exit_app_title">@string/app_name</string>
+    <string name="exit_app_message">Exit?</string>
+    <string name="exit_app_exit">Exit</string>
+    <string name="exit_app_cancel">Cancel</string>
+    <!-- Exit Application Dialog -->
+
+    <!-- Fake Store Backdrop menu labels -->
+    <string name="fake_store_store_label">Store</string>
+    <string name="fake_store_my_cart_label">My Cart</string>
+    <!-- Fake Store Backdrop menu labels -->
+
+    <!-- Add Product Into Cart Dialog -->
+    <string name="add_product_into_cart_title">Add into My Cart</string>
+    <string name="add_product_into_cart_message">You are added %s into your cart</string>
+    <string name="add_product_into_cart_confirm">Confirm</string>
+    <!-- Add Product Into Cart Dialog -->
+
+    <!-- My cart page labels -->
+    <string name="my_cart_minus_label">-</string>
+    <string name="my_cart_plus_label">+</string>
+    <string name="my_cart_update_successful">Update Successful and Continue with Check out.</string>
+    <!-- My cart page labels -->
+</resources>

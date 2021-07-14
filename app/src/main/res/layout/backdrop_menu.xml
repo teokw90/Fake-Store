@@ -1,0 +1,32 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="100dp"
+        android:paddingBottom="100dp"
+        style="@style/Widget.FakeStore.Backdrop">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/storeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fake_store_store_label"
+            style="@style/Widget.FakeStore.Button.TextButton"/>
+
+        <View
+            android:layout_width="56dp"
+            android:layout_height="1dp"
+            android:layout_margin="16dp"
+            android:background="?android:attr/textColorPrimary"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/myCartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fake_store_my_cart_label"
+            style="@style/Widget.FakeStore.Button.TextButton"/>
+    </LinearLayout>
+</layout>

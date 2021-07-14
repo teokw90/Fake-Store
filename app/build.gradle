@@ -1,0 +1,124 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.kw.fakeStore"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "long", "ServiceTimeout", "2000"
+        buildConfigField "String", "DateForamt", '"yyyy-MM-dd\'T\'HH:mm:ss"'
+        buildConfigField "String", "BaseURL", '"https://fakestoreapi.com"'
+        buildConfigField "String", "CartId", '"5"'
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    testOptions {
+        unitTests.includeAndroidResources = true
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Android Jetpack
+    implementation "androidx.core:core-ktx:$versions.androidxCore"
+    implementation "androidx.appcompat:appcompat:$versions.androidxAppCompat"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.androidxConstraintLayout"
+    implementation "androidx.test.espresso:espresso-idling-resource:$versions.espresso"
+    implementation "androidx.lifecycle:lifecycle-extensions:$versions.androidxLifecycle"
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.androidxNavigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.androidxNavigation"
+    implementation "androidx.room:room-ktx:$versions.androidxRoom"
+    implementation "androidx.room:room-runtime:$versions.androidxRoom"
+    kapt "androidx.room:room-compiler:$versions.androidxRoom"
+
+    // Dagger
+    implementation "com.google.dagger:dagger-android:$versions.dagger"
+    implementation "com.google.dagger:dagger-android-support:$versions.dagger"
+    kapt "com.google.dagger:dagger-android-processor:$versions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+
+    // Google Material Design
+    implementation "com.google.android.material:material:$versions.googleMaterialDesign"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$versions.gson"
+
+    // Kotlinx Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinxCoroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinxCoroutines"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofitGsonConverter"
+
+    // Volley
+    implementation "com.android.volley:volley:$versions.volley"
+}
+
+// Android Test Library
+dependencies {
+    // Android Jetpack
+    androidTestImplementation "androidx.arch.core:core-testing:$versions.androidxArchTest"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$versions.androidxTestExtKotlinRunner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$versions.espresso"
+
+    // Kotlinx Coroutines
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.kotlinxCoroutines"
+
+    // JUnit
+    androidTestImplementation "junit:junit:$versions.junit"
+}
+
+// Test Library
+dependencies {
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation "junit:junit:$versions.junit"
+
+    // Android Jetpack
+    testImplementation "androidx.arch.core:core-testing:$versions.androidxArchTest"
+    testImplementation "androidx.test:core-ktx:$versions.androidxCoreTest"
+    testImplementation "androidx.test.ext:junit-ktx:$versions.androidxTestExtKotlinRunner"
+
+    // Hamcrest
+    testImplementation "org.hamcrest:hamcrest-all:$versions.hamcrest"
+
+    // Kotlinx Coroutines
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.kotlinxCoroutines"
+}

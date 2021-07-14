@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_store"
+    app:startDestination="@id/productsCatalogFragment">
+
+    <fragment
+        android:id="@+id/productsCatalogFragment"
+        android:name="com.kw.fakeStore.store.view.fragment.ProductsCatalogFragment"
+        android:label="fragment_products_catalog"
+        tools:layout="@layout/fragment_products_catalog" >
+        <action
+            android:id="@+id/action_productsCatalogFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment">
+            <argument
+                android:name="productInfo"
+                app:argType="com.kw.fakeStore.store.uiModel.ProductWithQuantityInCart"
+                app:nullable="false"/>
+        </action>
+        <action
+            android:id="@+id/action_productsCatalogFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myCartFragment"
+        android:name="com.kw.fakeStore.store.view.fragment.MyCartFragment"
+        android:label="fragment_my_cart"
+        tools:layout="@layout/fragment_my_cart" >
+        <action
+            android:id="@+id/action_myCartFragment_to_productsCatalogFragment"
+            app:destination="@id/productsCatalogFragment"
+            app:popUpTo="@id/productsCatalogFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.kw.fakeStore.store.view.fragment.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details">
+        <argument
+            android:name="productInfo"
+            app:argType="com.kw.fakeStore.store.uiModel.ProductWithQuantityInCart"
+            app:nullable="false"/>
+        <action
+            android:id="@+id/action_productDetailsFragment_to_productsCatalogFragment"
+            app:destination="@id/productsCatalogFragment"
+            app:popUpTo="@id/productsCatalogFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

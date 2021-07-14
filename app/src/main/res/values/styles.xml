@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools">
+    <style name="Widget.FakeStore.Backdrop" parent="">
+        <item name="android:background">?attr/colorAccent</item>
+    </style>
+
+    <!-- Button -->
+    <style name="Widget.FakeStore.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:stateListAnimator" tools:ignore="NewApi">@animator/button_state_list_anim</item>
+        <item name="background">?attr/colorPrimaryDark</item>
+    </style>
+
+    <style name="Widget.FakeStore.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <!-- Button -->
+
+    <!-- Text Appearance -->
+    <style name="TextAppearance.FakeStore.Title" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.FakeStore.Normal" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+
+    <style name="TextAppearance.FakeStore.Small" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.FakeStore.ExtraSmall" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+    <!-- Text Appearance -->
+
+    <!-- Text View -->
+    <style name="Widget.FakeStore.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextAppearance">@style/TextAppearance.FakeStore.TextInputLayout.HintText</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="boxStrokeColor">@color/textInputOutlineColor</item>
+    </style>
+
+    <style name="TextAppearance.FakeStore.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <!-- Text View -->
+</resources>

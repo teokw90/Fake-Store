@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.kw.fakeStore.store.uiModel.ProductWithQuantityInCart"/>
+        <import type="kotlin.jvm.functions.Function1"/>
+        <import type="kotlin.Unit"/>
+        <variable
+            name="onDeleteButtonClicked"
+            type="Function1&lt;ProductWithQuantityInCart, Unit>" />
+        <variable
+            name="onDecreaseProductQualityButtonClicked"
+            type="Function1&lt;ProductWithQuantityInCart, Unit>" />
+        <variable
+            name="onIncreaseProductQualityButtonClicked"
+            type="Function1&lt;ProductWithQuantityInCart, Unit>" />
+        <variable
+            name="productWithQuantityInCart"
+            type="com.kw.fakeStore.store.uiModel.ProductWithQuantityInCart" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightMarginGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/productImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerInside"
+            app:imageForUrl="@{productWithQuantityInCart.image}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="H, 1:1"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/productTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="@{productWithQuantityInCart.title}"
+            android:textAppearance="?attr/textAppearanceSubtitle2"
+            app:layout_constraintEnd_toStartOf="@id/productRemoteFromCartButton"
+            app:layout_constraintStart_toEndOf="@id/productImage"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Sample Title"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/productRemoteFromCartButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="5dp"
+            android:onClick="@{_ -> onDeleteButtonClicked.invoke(productWithQuantityInCart)}"
+            android:scaleType="fitEnd"
+            app:srcCompat="@drawable/fake_store_delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/productTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.1"
+            app:layout_constraintDimensionRatio="H, 1:1"
+            style="@style/TextAppearance.FakeStore.Normal"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/decreaseProductQualityButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:enabled="true"
+            android:onClick="@{_-> onDecreaseProductQualityButtonClicked.invoke(productWithQuantityInCart)}"
+            android:text="@string/my_cart_minus_label"
+            app:layout_constraintBottom_toBottomOf="@id/productQuantity"
+            app:layout_constraintEnd_toStartOf="@id/productQuantity"
+            app:layout_constraintTop_toTopOf="@id/productQuantity"
+            app:layout_constraintDimensionRatio="H, 1:1"
+            app:layout_constraintWidth_percent="0.15"
+            style="@style/Widget.FakeStore.Button"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/productQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLength="3"
+            android:text='@{String.format("%d", productWithQuantityInCart.qualityInCart)}'
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/productRemoteFromCartButton"
+            app:layout_constraintStart_toEndOf="@id/productImage"
+            app:layout_constraintTop_toBottomOf="@+id/productTitle"
+            app:layout_constraintWidth_percent="0.15"
+            style="@style/Widget.FakeStore.TextInputLayout"
+            tools:text="1"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/increaseProductQualityButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:enabled="true"
+            android:onClick="@{_-> onIncreaseProductQualityButtonClicked.invoke(productWithQuantityInCart)}"
+            android:text="@string/my_cart_plus_label"
+            app:layout_constraintBottom_toBottomOf="@id/productQuantity"
+            app:layout_constraintStart_toEndOf="@id/productQuantity"
+            app:layout_constraintTop_toTopOf="@id/productQuantity"
+            app:layout_constraintDimensionRatio="H, 1:1"
+            app:layout_constraintWidth_percent="0.15"
+            style="@style/Widget.FakeStore.Button" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.kw.fakeStore.store.uiModel.ProductWithQuantityInCart"/>
+        <import type="kotlin.jvm.functions.Function1"/>
+        <import type="kotlin.Unit"/>
+        <variable
+            name="onSelected"
+            type="Function1&lt;ProductWithQuantityInCart, Unit>" />
+        <variable
+            name="productWithQuantityInCart"
+            type="com.kw.fakeStore.store.uiModel.ProductWithQuantityInCart" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="@dimen/fake_store_product_grid_card_width_portrait"
+        android:layout_height="match_parent"
+        android:onClick="@{_ -> onSelected.invoke(productWithQuantityInCart)}"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="0dp"
+        app:cardPreventCornerOverlap="true"
+        app:contentPaddingTop="@dimen/fake_store_product_grid_margin_top_third">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fake_store_product_grid_card_height_portrait"
+                android:scaleType="fitCenter"
+                app:imageForUrl="@{productWithQuantityInCart.image}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{productWithQuantityInCart.title}"
+                    android:textAlignment="center"
+                    android:textAppearance="?attr/textAppearanceSubtitle2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{productWithQuantityInCart.price}"
+                    android:textAlignment="center"
+                    android:textAppearance="?attr/textAppearanceBody2" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
